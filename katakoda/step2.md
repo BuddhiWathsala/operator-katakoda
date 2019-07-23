@@ -39,7 +39,7 @@ Send an HTTP event.
     "deviceType": "dryer",
     "power": 60000
     }'
-``` {{execute}}
+```{{execute}}
 
 
 ## Task 5
