@@ -46,4 +46,4 @@ Send an HTTP event.
 
 View logs.
 
-`kubectl logs $(kubectl get pods | awk '{ print $1 }' | grep ^power-consume-app-1)`{{execute}}
+`kubectl logs $(kubectl get pods | awk '{ print $1 }' | grep ^power-consume-app-1) | tail -n 2`{{execute}}
