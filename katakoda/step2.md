@@ -6,15 +6,20 @@ Please wait until all pods come to the running state. To check all pods are in r
 
 `kubectl get pods`{{execute}}
 
-
 ## Task 2
+
+View the stateful app.
+
+`cat deploy/examples/example-stateful-log-app.yaml`{{execute}}
+
+## Task 3
 
 Deploy the stateful app.
 
 `kubectl apply -f deploy/examples/example-stateful-log-app.yaml`{{execute}}
 
 
-## Task 3
+## Task 4
 
 Add Siddhi host to the /etc/hosts file along with the minikube IP.
 
@@ -25,7 +30,7 @@ Please wait until all pods come to the running state. To check all pods are in r
 `kubectl get pods`{{execute}}
 
 
-## Task 4
+## Task 5
 
 Send an HTTP event.
 
@@ -42,7 +47,7 @@ Send an HTTP event.
 ```{{execute}}
 
 
-## Task 5
+## Task 6
 
 View logs.
 
