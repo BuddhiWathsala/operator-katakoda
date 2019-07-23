@@ -2,7 +2,7 @@ Install a Siddhi application which have HTTP source and log sink. This app consu
 
 ## Task 1
 
-Wait until all pods come to the running state.
+Please wait until all pods come to the running state. To check all pods are in running state use the following command.
 
 `kubectl get pods`{{execute}}
 
@@ -20,7 +20,7 @@ Add Siddhi host to the /etc/hosts file along with the minikube IP.
 
 ``` echo " `minikube ip` siddhi" >> /etc/hosts ```{{execute}}
 
-Wait until all pods come to the running state.
+Please wait until all pods come to the running state. To check all pods are in running state use the following command.
 
 `kubectl get pods`{{execute}}
 

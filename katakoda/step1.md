@@ -42,13 +42,3 @@ Install Siddhi Operator
 
 `kubectl create -f ./deploy/operator.yaml`{{execute}}
 
-
-curl -X POST \
-    http://siddhi/power-consume-app-0/8080/checkPower \
-    -H 'Accept: */*' \
-    -H 'Content-Type: application/json' \
-    -H 'Host: siddhi' \
-    -d '{
-    "deviceType": "dryer",
-    "power": 60000
-    }'
