@@ -6,19 +6,24 @@ Enable NGINX ingress controller
 
 `minikube addons enable ingress`{{execute}}
 
+
 ## Task 2
 
 Install NATS Operator
+
 `kubectl apply -f https://github.com/nats-io/nats-operator/releases/download/v0.5.0/00-prereqs.yaml`{{execute}}
 
 `kubectl apply -f https://github.com/nats-io/nats-operator/releases/download/v0.5.0/10-deployment.yaml`{{execute}}
 
+
 ## Task 3
 
 Install NATS Streaming Operator
+
 `kubectl apply -f https://raw.githubusercontent.com/nats-io/nats-streaming-operator/master/deploy/default-rbac.yaml`{{execute}}
 
 `kubectl apply -f https://raw.githubusercontent.com/nats-io/nats-streaming-operator/master/deploy/deployment.yaml`{{execute}}
+
 
 ## Task 4
 

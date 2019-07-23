@@ -6,11 +6,13 @@ Please wait until all pods come to the running state. To check all pods are in r
 
 `kubectl get pods`{{execute}}
 
+
 ## Task 2
 
 View the stateful app.
 
 `cat deploy/examples/example-stateful-log-app.yaml`{{execute}}
+
 
 ## Task 3
 
@@ -32,7 +34,7 @@ Please wait until all pods come to the running state. To check all pods are in r
 
 ## Task 5
 
-Send an HTTP event.
+Send an event using HTTP request. You can send multiple HTTP requests. The Siddhi app will print the log in every 30 seconds if the total power you send is greater than or equal to 10000W.
 
 ```
     curl -X POST \
@@ -49,6 +51,6 @@ Send an HTTP event.
 
 ## Task 6
 
-View logs.
+View logs. Logs will print in every 30 seconds.
 
 `kubectl logs $(kubectl get pods | awk '{ print $1 }' | grep ^power-consume-app-1) | tail -n 2`{{execute}}
