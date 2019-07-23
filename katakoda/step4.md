@@ -40,6 +40,6 @@ Send an event using an HTTP request. You can send multiple HTTP requests. The Si
     }'
 ```{{execute}}
 
-Use the following command to view logs. Logs will print in every 30 seconds.
+Use the following command to view logs. Logs will print in every 30 seconds, therefore please wait for a couple of seconds to view the logs.
 
 `kubectl logs $(kubectl get pods | awk '{ print $1 }' | grep ^power-consume-app-1) | tail -n 2`{{execute}}
