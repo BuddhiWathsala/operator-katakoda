@@ -13,7 +13,7 @@ Siddhi supports two different deployments types.
 
 In this example we are planning to deploy basic distributed Siddhi app using the Siddhi operator. 
 
-![Distributed][DistribudedK8Depl.png]
+![Distributed](DistribudedK8Depl.png)
 
 ## Task 2
 
