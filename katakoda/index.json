@@ -10,8 +10,12 @@
         "text": "step1.md"
       },
       {
-        "title": "Step 2 - Deploy a siddhi app",
+        "title": "Install the Siddhi operator",
         "text": "step2.md"
+      },
+      {
+        "title": "Deploy the stateful Siddhi app",
+        "text": "step3.md"
       }
     ],
     "intro": {

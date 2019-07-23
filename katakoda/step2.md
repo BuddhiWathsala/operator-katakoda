@@ -1,56 +1,21 @@
-Install a Siddhi application which has HTTP source and log sink. This app consumes events from HTTP as a JSON message of { 'deviceType': 'dryer', 'power': 6000 } format and inserts the events into DevicePowerStream, and alerts the user if the power level is greater than or equal to 600W by printing a message in the log.
+Now it is time to install the Siddhi operator. Siddhi operator installation uses two YAML files.
 
-## Task 1
+1. Prerequisite file which contained all the configurations need by the operator like CRD, service accounts, roles, and role bindings.
+2. Operator deployment file that contained operator deployment and the parser deployment.
 
-Please wait until all pods come to the running state. To check all pods are in running state use the following command.
+`git clone https://github.com/BuddhiWathsala/siddhi-operator.git`{{execute}}
 
-`kubectl get pods`{{execute}}
+`cd siddhi-operator`{{execute}}
 
+`git checkout buddhi-versioning`{{execute}}
 
-## Task 2
+`kubectl create -f ./deploy/siddhi_v1alpha2_siddhiprocess_crd.yaml`{{execute}}
 
-View the stateful app.
+`kubectl create -f ./deploy/service_account.yaml`{{execute}}
 
-`cat deploy/examples/example-stateful-log-app.yaml`{{execute}}
+`kubectl create -f ./deploy/role.yaml`{{execute}}
 
+`kubectl create -f ./deploy/role_binding.yaml`{{execute}}
 
-## Task 3
+`kubectl create -f ./deploy/operator.yaml`{{execute}}
 
-Deploy the stateful app.
-
-`kubectl apply -f deploy/examples/example-stateful-log-app.yaml`{{execute}}
-
-
-## Task 4
-
-Add Siddhi host to the /etc/hosts file along with the minikube IP.
-
-``` echo " `minikube ip` siddhi" >> /etc/hosts ```{{execute}}
-
-Please wait until all pods come to the running state. To check all pods are in running state use the following command.
-
-`kubectl get pods`{{execute}}
-
-
-## Task 5
-
-Send an event using an HTTP request. You can send multiple HTTP requests. The Siddhi app will print the log in every 30 seconds if the total power you send is greater than or equal to 10000W.
-
-```
-    curl -X POST \
-    http://siddhi/power-consume-app-0/8080/checkPower \
-    -H 'Accept: */*' \
-    -H 'Content-Type: application/json' \
-    -H 'Host: siddhi' \
-    -d '{
-    "deviceType": "dryer",
-    "power": 100000
-    }'
-```{{execute}}
-
-
-## Task 6
-
-Use the following command to view logs. Logs will print in every 30 seconds.
-
-`kubectl logs $(kubectl get pods | awk '{ print $1 }' | grep ^power-consume-app-1) | tail -n 2`{{execute}}
