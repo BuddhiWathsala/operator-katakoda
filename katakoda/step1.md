@@ -2,9 +2,7 @@ Here we are going to deploy a stateful Siddhi app using Siddhi process CRD. You 
 
 ## Task 1
 
-Start minikube and enable NGINX ingress controller
-
-`minikube start --memory 8192 --cpus=8`{{execute}}
+Enable NGINX ingress controller
 
 `minikube addons enable ingress`{{execute}}
 

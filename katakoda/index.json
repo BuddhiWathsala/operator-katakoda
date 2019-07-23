@@ -4,6 +4,9 @@
   "difficulty": "beginner",
   "time": "2 minutes",
   "details": {
+    "intro": {
+      "minikube": "minikube.sh"
+    },
     "steps": [
       {
         "title": "Step 1 - Install the Siddhi operator",
