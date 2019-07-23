@@ -16,6 +16,10 @@
       {
         "title": "Deploy the stateful Siddhi app",
         "text": "step3.md"
+      },
+      {
+        "title": "Send events to the Siddhi app",
+        "text": "step4.md"
       }
     ],
     "intro": {

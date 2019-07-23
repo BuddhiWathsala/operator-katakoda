@@ -1,56 +1,66 @@
-Install a Siddhi application which has HTTP source and log sink. This app consumes events from HTTP as a JSON message of { 'deviceType': 'dryer', 'power': 6000 } format and inserts the events into DevicePowerStream, and alerts the user if the power level is greater than or equal to 600W by printing a message in the log.
+Now we are going to deploy a stateful Siddhi app. This Siddhi application listning to a event stream that provides details of power consumption in each electric item in a house. If the power consumption of the dryer exceed 10000W within a 1 minute time period then the Siddhi application will sends an log event to the user. This log event will print for every 30 seconds.
 
-## Task 1
+The Siddhi application uses a HTTP source like below to receive events.
 
-Please wait until all pods come to the running state. To check all pods are in running state use the following command.
+```programming
+@source(
+    type='http',
+    receiver.url='${RECEIVER_URL}',
+    basic.auth.enabled='false',
+    @map(type='json')
+)
+define stream DevicePowerStream(deviceType string, power int);
+```
+
+And logs events using the log sink.
+
+```programming
+@sink(type='log', prefix='LOGGER') 
+define stream PowerSurgeAlertStream(deviceType string, powerConsumed long);
+```
+
+The execution logic of the Siddhi app defined by the following query.
+
+```programming
+@info(name='power-consumption-window')  
+from DevicePowerStream#window.time(1 min) 
+select deviceType, sum(power) as powerConsumed
+group by deviceType
+having powerConsumed > 10000
+output every 30 sec
+insert into PowerSurgeAlertStream;
+```
+
+This query that executes in the Siddhi app do the following tasks.
+1. Receive events from the HTTP source in 1 minute period
+1. Group all the events by the electronic device type
+1. Select all the devices which excedd 1000W power consumption
+1. Output aggregated events in each 30 seconds
+
+Note that if you just specify only the messaging system name as NATS like below, Siddhi operator will automatically creates the NATS cluster and the NATS streaming cluster.
+
+```yaml
+messagingSystem:
+    type: nats
+```
+
+Before install the Siddhi apps you have to ensure that all pods in the cluster up and running like below.
 
 `kubectl get pods`{{execute}}
 
+```sh
+$ kubectl get pods
+NAME                                       READY     STATUS    RESTARTS   AGE
+nats-operator-dd7f4945f-x4vf8              1/1       Running   0          10m
+nats-streaming-operator-6fbb6695ff-9rmlx   1/1       Running   0          10m
+siddhi-operator-6698d8f69d-w2kvj           1/1       Running   0          10m
+siddhi-parser-76448887d5-hgnrw             1/1       Running   0          10m
+```
 
-## Task 2
+Now you can clone the Siddhi operator GitHub repository and install the sample.
 
-View the stateful app.
+`git clone https://github.com/BuddhiWathsala/siddhi-operator.git`{{execute}}
 
-`cat deploy/examples/example-stateful-log-app.yaml`{{execute}}
-
-
-## Task 3
-
-Deploy the stateful app.
+`cd siddhi-operator`{{execute}}
 
 `kubectl apply -f deploy/examples/example-stateful-log-app.yaml`{{execute}}
-
-
-## Task 4
-
-Add Siddhi host to the /etc/hosts file along with the minikube IP.
-
-``` echo " `minikube ip` siddhi" >> /etc/hosts ```{{execute}}
-
-Please wait until all pods come to the running state. To check all pods are in running state use the following command.
-
-`kubectl get pods`{{execute}}
-
-
-## Task 5
-
-Send an event using an HTTP request. You can send multiple HTTP requests. The Siddhi app will print the log in every 30 seconds if the total power you send is greater than or equal to 10000W.
-
-```
-    curl -X POST \
-    http://siddhi/power-consume-app-0/8080/checkPower \
-    -H 'Accept: */*' \
-    -H 'Content-Type: application/json' \
-    -H 'Host: siddhi' \
-    -d '{
-    "deviceType": "dryer",
-    "power": 100000
-    }'
-```{{execute}}
-
-
-## Task 6
-
-Use the following command to view logs. Logs will print in every 30 seconds.
-
-`kubectl logs $(kubectl get pods | awk '{ print $1 }' | grep ^power-consume-app-1) | tail -n 2`{{execute}}
