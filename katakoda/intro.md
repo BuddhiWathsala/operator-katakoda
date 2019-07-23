@@ -1,1 +1,1 @@
-Welcome to your first Katacoda Scenario!
+Welcome to your stateful Siddhi app deployment scenario!

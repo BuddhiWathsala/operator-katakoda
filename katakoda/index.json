@@ -1,8 +1,8 @@
 {
-  "title": "Siddhi Operator",
+  "title": "Siddhi Operator Deployment",
   "description": "Deploy Siddhi Applications in Kubernetes",
   "difficulty": "beginner",
-  "time": "2 minutes",
+  "time": "5 minutes",
   "details": {
     "steps": [
       {

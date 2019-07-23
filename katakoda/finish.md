@@ -1,1 +1,1 @@
-You've completed your first Katacoda scenario!
+You've completed your stateful Siddhi app deployment successfully!
