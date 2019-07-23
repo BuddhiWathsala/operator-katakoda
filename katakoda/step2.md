@@ -37,7 +37,7 @@ Send an HTTP event.
     -H 'Host: siddhi' \
     -d '{
     "deviceType": "dryer",
-    "power": 60000
+    "power": 100000
     }'
 ```{{execute}}
 
