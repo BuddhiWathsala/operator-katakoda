@@ -1,4 +1,4 @@
-Install a Siddhi application which have HTTP source and log sink. This app consumes events from HTTP as a JSON message of { 'deviceType': 'dryer', 'power': 6000 } format and inserts the events into DevicePowerStream, and alerts the user if the power level is greater than or equal to 600W by printing a message in the log.
+Install a Siddhi application which has HTTP source and log sink. This app consumes events from HTTP as a JSON message of { 'deviceType': 'dryer', 'power': 6000 } format and inserts the events into DevicePowerStream, and alerts the user if the power level is greater than or equal to 600W by printing a message in the log.
 
 ## Task 1
 
@@ -34,7 +34,7 @@ Please wait until all pods come to the running state. To check all pods are in r
 
 ## Task 5
 
-Send an event using HTTP request. You can send multiple HTTP requests. The Siddhi app will print the log in every 30 seconds if the total power you send is greater than or equal to 10000W.
+Send an event using an HTTP request. You can send multiple HTTP requests. The Siddhi app will print the log in every 30 seconds if the total power you send is greater than or equal to 10000W.
 
 ```
     curl -X POST \
@@ -51,6 +51,6 @@ Send an event using HTTP request. You can send multiple HTTP requests. The Siddh
 
 ## Task 6
 
-View logs. Logs will print in every 30 seconds.
+Use the following command to view logs. Logs will print in every 30 seconds.
 
 `kubectl logs $(kubectl get pods | awk '{ print $1 }' | grep ^power-consume-app-1) | tail -n 2`{{execute}}
