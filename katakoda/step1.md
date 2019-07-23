@@ -1,8 +1,8 @@
-This is your first step.
+Here we are going to deploy a stateful Siddhi app using Siddhi process CRD. You can follow these steps and deploy that Siddhi app very easily using a couple of kubectl commands.
 
 ## Task 1
 
-Install minikube
+Install minikube and enable NGINX ingress controller
 
 `minikube start --memory 8192 --cpus=8`{{execute}}
 
