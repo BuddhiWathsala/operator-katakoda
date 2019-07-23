@@ -2,7 +2,7 @@ Here we are going to deploy a stateful Siddhi app using Siddhi process CRD. You 
 
 ## Task 1
 
-Install minikube and enable NGINX ingress controller
+Start minikube and enable NGINX ingress controller
 
 `minikube start --memory 8192 --cpus=8`{{execute}}
 
@@ -41,3 +41,14 @@ Install Siddhi Operator
 `kubectl create -f ./deploy/role_binding.yaml`{{execute}}
 
 `kubectl create -f ./deploy/operator.yaml`{{execute}}
+
+
+curl -X POST \
+    http://siddhi/power-consume-app-0/8080/checkPower \
+    -H 'Accept: */*' \
+    -H 'Content-Type: application/json' \
+    -H 'Host: siddhi' \
+    -d '{
+    "deviceType": "dryer",
+    "power": 60000
+    }'

@@ -2,9 +2,9 @@ Install a Siddhi application which have HTTP source and log sink. This app consu
 
 ## Task 1
 
-Create a persistence volume to persist the state of the Siddhi app.
+Wait until all pods come to the running state.
 
-`kubectl apply -f deploy/examples/example-pv.yaml`{{execute}}
+`kubectl get pods`{{execute}}
 
 
 ## Task 2
@@ -31,7 +31,7 @@ Send an HTTP event.
 
 ```
     curl -X POST \
-    http://siddhi/power-surge-app-0/8080/checkPower \
+    http://siddhi/power-consume-app-0/8080/checkPower \
     -H 'Accept: */*' \
     -H 'Content-Type: application/json' \
     -H 'Host: siddhi' \
