@@ -5,7 +5,7 @@
   "time": "2 minutes",
   "details": {
     "intro": {
-      "minikube": "minikube.sh"
+      "courseData": "minikube.sh"
     },
     "steps": [
       {
