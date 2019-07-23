@@ -11,7 +11,7 @@ Create a persistence volume to persist the state of the Siddhi app.
 
 Deploy the stateful app.
 
-`kubectl apply -f deploy/examples/example-stateless-log-app.yaml`{{execute}}
+`kubectl apply -f deploy/examples/example-stateful-log-app.yaml`{{execute}}
 
 
 ## Task 3
@@ -19,6 +19,10 @@ Deploy the stateful app.
 Add Siddhi host to the /etc/hosts file along with the minikube IP.
 
 ``` echo " `minikube ip` siddhi" >> /etc/hosts ```{{execute}}
+
+Wait until all pods come to the running state.
+
+`kubectl get pods`{{execute}}
 
 
 ## Task 4
@@ -36,3 +40,10 @@ Send an HTTP event.
     "power": 60000
     }'
 ``` {{execute}}
+
+
+## Task 5
+
+View logs.
+
+`kubectl logs $(kubectl get pods | awk '{ print $1 }' | grep ^power-consume-app-1)`{{execute}}
