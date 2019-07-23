@@ -1,11 +1,19 @@
-Here we are going to deploy a stateful Siddhi app using Siddhi process CRD. You can follow these steps and deploy that Siddhi app very easily using a couple of kubectl commands.
+Siddhi is a cloud native Streaming and Complex Event Processing engine that understands Streaming SQL queries in order to capture events from diverse data sources, process them, detect complex conditions, and publish output to various endpoints in real time. 
 
-## Task 1
+Siddhi operator allows you to run Siddhi stream processing logic directly on a Kubernetes cluster.
 
-Enable NGINX ingress controller.
+Siddhi uses various types of sources to receive events like HTTP, Kafka, NATS, and Prometheus etc. Siddhi operator by default use NGINX ingress controller to receive HTTP/HTTPS requests. Therefore first you have to [enable ingress](https://kubernetes.github.io/ingress-nginx/deploy/) in your kubernetes cluster. Use following command to enable NGINX ingress controller in this minikube cluster.
 
 `minikube addons enable ingress`{{execute}}
 
+Siddhi supports two different deployments types.
+
+1. Default deployment
+1. Distributed deployment
+
+In this example we are planning to deploy basic distributed Siddhi app using the Siddhi operator. 
+
+![Distributed][DistribudedK8Depl.png]
 
 ## Task 2
 
