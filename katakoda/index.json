@@ -1,0 +1,32 @@
+{
+  "title": "Siddhi Operator",
+  "description": "Deploy Siddhi Applications in Kubernetes",
+  "difficulty": "beginner",
+  "time": "2 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "Step 1 - Install the Siddhi operator",
+        "text": "step1.md"
+      },
+      {
+        "title": "Step 2 - Deploy a siddhi app",
+        "text": "step2.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "credits": ""
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "hideintro": true,
+    "uilayout": "terminal"
+  },
+  "backend": {
+    "imageid": "minikube"
+  }
+}
