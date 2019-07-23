@@ -1,11 +1,11 @@
-Siddhi operator divide the given Siddhi app into two partial Siddhi apps and deploy both apps in two kubernetes deployments. Those two apps are,
+Siddhi operator divides the given Siddhi app into two partial Siddhi apps and deploys both apps in two kubernetes deployments. Those two apps are,
 
-1. Passthrough app - power-consume-app-0
-1. Process app - power-consume-app-1
+1. Passthrough app (power-consume-app-0)
+1. Process app  (power-consume-app-1)
 
-Passthrough app recieves HTTP requests and redirect those requests to NATS streaming cluster. Process app receives events from NATS, execute the logic, and logs the output.
+Passthrough app receives HTTP requests and redirects those requests to the NATS streaming cluster. Process app receives events from NATS, execute the logic, and logs the output.
 
-Since Passthrough app contains an HTTP source, Siddhi operator by default creates a kubernetes service for the deployment and expose the HTTP endpoint through an ingress. Minikube embbed the minikube IP to the ingress. Siddhi operator uses hostname called `siddhi` to receive all external traffic. Thereofore we need to add the `siddhi` entry to the `/etc/hosts` file like below.
+Since Passthrough app contains an HTTP source, Siddhi operator by default creates a kubernetes service for the deployment and expose the HTTP endpoint through an ingress. Minikube uses the minikube IP as the ingress external IP. Siddhi operator uses hostname called `siddhi` to receive all external traffic. Therefore we need to add the `siddhi` entry to the `/etc/hosts` file like below.
 
 ``` echo " `minikube ip` siddhi" >> /etc/hosts ```{{execute}}
 

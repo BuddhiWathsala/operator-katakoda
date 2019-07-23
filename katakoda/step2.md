@@ -1,6 +1,6 @@
 Now it is time to install the Siddhi operator. Siddhi operator installation uses two YAML files.
 
-1. Prerequisite file which contained all the configurations need by the operator like CRD, service accounts, roles, and role bindings.
+1. Prerequisite file which contains all the configurations needed by the operator like CRD, service accounts, roles, and role bindings.
 2. Operator deployment file that contained operator deployment and the parser deployment.
 
 `kubectl apply -f https://github.com/siddhi-io/siddhi-operator/releases/download/v0.2.0-m1/00-prereqs.yaml`{{execute}}
