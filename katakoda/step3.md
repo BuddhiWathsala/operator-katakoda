@@ -59,4 +59,8 @@ siddhi-parser-76448887d5-hgnrw             1/1       Running   0          10m
 
 Now you can deploy the sample.
 
+`git clone https://github.com/siddhi-io/siddhi-operator.git`{{execute}}
+
+`cd siddhi-operator`{{execute}}
+
 `kubectl apply -f deploy/examples/example-stateful-log-app.yaml`{{execute}}
