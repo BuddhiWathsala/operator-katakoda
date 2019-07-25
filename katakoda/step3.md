@@ -61,6 +61,4 @@ Now you can deploy the sample.
 
 `git clone https://github.com/siddhi-io/siddhi-operator.git`{{execute}}
 
-`cd siddhi-operator`{{execute}}
-
-`kubectl apply -f deploy/examples/example-stateful-log-app.yaml`{{execute}}
+`kubectl apply -f siddhi-operator/deploy/examples/example-stateful-log-app.yaml`{{execute}}
