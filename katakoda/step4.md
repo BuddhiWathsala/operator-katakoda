@@ -26,7 +26,7 @@ siddhi-parser-76448887d5-hgnrw             1/1       Running   0          10m
 siddhi-stan-1                              1/1       Running   1          5m
 ```
 
-Send an event using an HTTP request. You can send multiple HTTP requests. The Siddhi app will print the log in every 30 seconds if the total power you send is greater than or equal to 10000W.
+Send an event using an HTTP request. You can send multiple HTTP requests. The Siddhi app will print the log in every 30 seconds if the total power you send is greater than 10000W.
 
 ```
     curl -X POST \
