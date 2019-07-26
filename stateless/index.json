@@ -1,5 +1,5 @@
 {
-  "title": "Siddhi Operator Deployment",
+  "title": "Siddhi Stateless Deployment",
   "description": "Deploy Siddhi Applications in Kubernetes",
   "difficulty": "beginner",
   "time": "5 minutes",
