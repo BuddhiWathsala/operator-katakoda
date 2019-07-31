@@ -54,7 +54,7 @@ messagingSystem:
 
 Now you can deploy the Stateful Siddhi App.
 
-`kubectl apply -f example-stateful-log-app.yaml`
+`kubectl apply -f example-stateful-log-app.yaml`{{execute}}
 
 Validate the app is deployed correctly by running.
 
@@ -79,7 +79,12 @@ Here the Siddhi operator divides the given Siddhi app into two partial Siddhi ap
 
 Where passthrough app receives HTTP requests and redirects those requests to the NATS streaming cluster to the Process app to execute the logic in a stateful way and produce the output via logs. Here the `siddhi-nats-1` pod is the NATS cluster which automatically created by the Siddhi operator. The `siddhi-stan-1 ` pod is the NATS streaming cluster which automatically created by the Siddhi operator. NATS is the default naming convension for name NATS clusters and STAN is the default naming convension for name streaming cluster.
 
-You can view the partial apps using the following commands.
+You can view the `SiddhiProcess` using the following commands.
 
-### TODO //
+```sh
+$ kubectl get sp
+
+NAME                STATUS    READY     AGE
+power-consume-app   Running   2/2       5m
+```
 
