@@ -24,7 +24,7 @@ siddhi-stan-1                              1/1       Running   1          5m
 
 Send an event using an HTTP request. You can send multiple HTTP requests. The Siddhi app will print the log in every 30 seconds if the total power you send is greater than 10000W.
 
-```
+`
     curl -X POST \
     http://siddhi/power-consume-app-0/8080/checkPower \
     -H 'Accept: */*' \
@@ -34,7 +34,7 @@ Send an event using an HTTP request. You can send multiple HTTP requests. The Si
     "deviceType": "dryer",
     "power": 100000
     }'
-```{{execute}}
+`{{execute}}
 
 Use the following command to view logs. Logs will print in every 30 seconds, therefore please wait for a couple of seconds to view the logs.
 
