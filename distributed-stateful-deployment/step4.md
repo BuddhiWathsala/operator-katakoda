@@ -42,7 +42,7 @@ Use the following command to view logs. Logs will print in every 30 seconds, the
 
 The expected output logs will be as following.
 
-```sh
+```
 [2019-07-31 10:19:22,671]  INFO {org.wso2.carbon.databridge.receiver.binary.internal.BinaryDataReceiver} - Started Binary TCP Transport on port : 9612
 [2019-07-31 10:19:22,673]  INFO {org.wso2.carbon.databridge.receiver.thrift.internal.ThriftDataReceiverDS} - Service Component is activated
 [2019-07-31 10:19:22,684]  INFO {org.wso2.carbon.databridge.receiver.thrift.ThriftDataReceiver} - Thrift Server started at 0.0.0.0
