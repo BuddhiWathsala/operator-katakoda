@@ -25,7 +25,7 @@ Siddhi operator splits the given Siddhi App into partial apps and connect with e
 
 The stateful Siddhi app deployment needs a Kubernetes persistence volume to persist the state of the Siddhi app. To do that in minikube first you have to download this YAML file that contains the K8s persistence volume specification.
 
-`wget https://raw.githubusercontent.com/siddhi-io/siddhi-operator/master/deploy/examples/example-pv.yaml`{{execute}}
+`wget https://raw.githubusercontent.com/BuddhiWathsala/siddhi-operator/master/deploy/examples/example-pv.yaml`{{execute}}
 
 You can see the persistence volume YAML using following command.
 
