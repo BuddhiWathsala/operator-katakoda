@@ -49,7 +49,11 @@ Now you have to create the `siddhi_user` and the `siddhi_group` using following 
 
 After that change the ownership of the directory using following command.
 
-`sudo chown siddhi_user:siddhi_io /home/docker`
+`sudo chown siddhi_user:siddhi_io /home/docker`{{execute}}
+
+Now exit from the minikube cluster.
+
+`exit`{{execute}}
 
 ## Install Siddhi operator
 
