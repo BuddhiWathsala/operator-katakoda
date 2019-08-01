@@ -5,10 +5,6 @@ Siddhi operator divides the given Siddhi app into two partial Siddhi apps and de
 
 Passthrough app receives HTTP requests and redirects those requests to the NATS streaming cluster. Process app receives events from NATS, execute the logic, and logs the output.
 
-Since Passthrough app contains an HTTP source, Siddhi operator by default creates a kubernetes service for the deployment and expose the HTTP endpoint through an ingress. Minikube uses the minikube IP as the ingress external IP. Siddhi operator uses hostname called `siddhi` to receive all external traffic. Therefore we need to add the `siddhi` entry to the `/etc/hosts` file like below.
-
-``` echo " `minikube ip` siddhi" >> /etc/hosts ```{{execute}}
-
 Before sending any request we need to ensure that all pods are up and running.
 
 `kubectl get pods`{{execute}}
@@ -38,12 +34,11 @@ Send an event using an HTTP request. You can send multiple HTTP requests. The Si
     "deviceType": "dryer",
     "power": 100000
     }'
-```
-{{execute}}
+```{{execute}}
 
 Use the following command to view logs. Logs will print in every 30 seconds, therefore please wait for a couple of seconds to view the logs.
 
-`kubectl logs $(kubectl get pods | awk '{ print $1 }' | grep ^power-consume-app-1) | tail -n 2`{{execute}}
+`kubectl logs $(kubectl get pods | awk '{ print $1 }' | grep ^power-consume-app-1) | tail -n 10`{{execute}}
 
 The expected output logs will be as following.
 
