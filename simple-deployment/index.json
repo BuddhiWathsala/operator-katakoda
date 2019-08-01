@@ -1,5 +1,5 @@
 {
-  "title": "Siddhi Operator Deployment",
+  "title": "Kubernetes Deployment",
   "description": "Deploy Siddhi Applications in Kubernetes",
   "difficulty": "beginner",
   "time": "5 minutes",
@@ -23,6 +23,6 @@
     "uilayout": "terminal"
   },
   "backend": {
-    "imageid": "kubernetes"
+    "imageid": "kubernetes-cluster"
   }
 }
