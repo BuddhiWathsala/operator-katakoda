@@ -1,6 +1,6 @@
 [Siddhi](http://siddhi.io) is a cloud-native, scalable, Streaming and Complex Event Processing System capable of building real-time applications.
 
-In this scenario we will see how we can deploy a Siddhi Application that ran  distributed with high availability preserving its internal states.
+In this scenario, we will see how we can deploy a Siddhi Application that run  distributed with high availability preserving its internal states.
 We will be deploying the following `PowerConsumptionSurgeDetection` app.
 
 ```programming

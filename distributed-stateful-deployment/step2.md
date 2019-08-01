@@ -4,14 +4,13 @@ As Siddhi operator by default uses NGINX ingress controller to receive HTTP/HTTP
 
 `minikube addons enable ingress`{{execute}}
 
-Minikube uses the minikube IP as the ingress external IP, and since Siddhi operator uses hostname called siddhi to receive all external traffic we need to add the siddhi entry to the /etc/hosts file using the below command.
+Minikube uses the minikube IP as the ingress external IP, and since Siddhi operator uses hostname called `siddhi` to receive all external traffic we need to add the siddhi entry to the `/etc/hosts` file using the below command.
 
 ``` echo " `minikube ip` siddhi" >> /etc/hosts ```{{execute}}
 
 ## Deploy NATS and NATS Streaming
 
-Siddhi operator splits the given Siddhi App into partial apps and connect with each other using NATS and NATS Streaming systems to communicate between the distributed applications. Use the following commads to install the NATS and NATS streaming systems.
-
+Siddhi operator splits the given Siddhi App into partial apps and connects using NATS and NATS Streaming systems to communicate between the distributed applications. Use the following commands to install the NATS and NATS streaming systems.
 
 `kubectl apply -f https://github.com/nats-io/nats-operator/releases/download/v0.5.0/00-prereqs.yaml`{{execute}}
 
@@ -23,27 +22,27 @@ Siddhi operator splits the given Siddhi App into partial apps and connect with e
 
 ## Setup Persistence Volume
 
-The stateful Siddhi app deployment needs a Kubernetes persistence volume to persist the state of the Siddhi app. To do that in minikube first you have to download this YAML file that contains the K8s persistence volume specification.
+The stateful Siddhi app deployment needs a Kubernetes persistence volume to preserve the state of the Siddhi app. To do that in minikube first you have to download this YAML file that contains the K8s persistence volume specification.
 
-`wget https://raw.githubusercontent.com/BuddhiWathsala/siddhi-operator/master/deploy/examples/example-pv.yaml`{{execute}}
+`wget https://raw.githubusercontent.com/siddhi-io/siddhi-operator/master/deploy/examples/example-pv.yaml`{{execute}}
 
-You can see the persistence volume YAML using following command.
+You can see the persistence volume YAML using the following command.
 
 `cat example-pv.yaml`{{execute}}
 
-Now you can deploy the persistence volume using following command.
+Now you can deploy the persistence volume using the following command.
 
 `kubectl apply -f example-pv.yaml`{{execute}}
 
-Siddhi runner docker image runs by the user called `siddhi_user`. The `siddhi_user` belongs to the `siddhi_io` user group. Here we mount `/home/docker/` directory as the persistence volume. Hence we need to change the ownership of that director to the `siddhi_user` in the `siddhi_io` user group.
+Siddhi runner docker image runs by a user called `siddhi_user`. The `siddhi_user` belongs to the `siddhi_io` user group. Here we mount `/home/siddhi_user/` directory as the persistence volume. Hence we need to change the ownership of that director to the `siddhi_user` in the `siddhi_io` user group.
 
-You have to create the `siddhi_user` and the `siddhi_group` using following commands.
-
-`sudo /usr/sbin/adduser --system -gid 802 -uid 802 siddhi_user`{{execute}}
+You have to create the `siddhi_user` and the `siddhi_group` using the following commands.
 
 `sudo /usr/sbin/addgroup --system -gid 802 siddhi_io`{{execute}}
 
-After that change the ownership of the directory using following command.
+`sudo /usr/sbin/adduser --system -gid 802 -uid 802 siddhi_user`{{execute}}
+
+After that change the ownership of the directory using the following command.
 
 `sudo chown siddhi_user:siddhi_io /home/siddhi_user/`{{execute}}
 
@@ -62,7 +61,7 @@ Ensure that all necessary pods in the cluster up and running using the following
 
 `kubectl get pods`{{execute}}
 
-Make sure the all the following 4 pods are up and running,
+Make sure the all the following 4 pods are up and running.
 
 ```sh
 $ kubectl get pods

@@ -1,10 +1,10 @@
-Here we will  deploy a stateful Siddhi app that we have discussed in the introduction section.
+Here we will deploy a stateful Siddhi app that we have discussed in the introduction section.
 
 A SiddhiProcess YAML to deploy the application can be retrieved as bellow.
 
 `wget https://raw.githubusercontent.com/siddhi-io/siddhi-operator/master/deploy/examples/example-stateful-log-app.yaml`{{execute}}
 
-View the SiddhiProcess yaml as following.
+View the SiddhiProcess YAML as following.
 
 `cat example-stateful-log-app.yaml`{{execute}}
 
@@ -30,8 +30,8 @@ define stream PowerSurgeAlertStream(deviceType string, powerConsumed long);
 The execution logic of the Siddhi app defined by the following query.
 
 ```programming
-@info(name='power-consumption-window')  
-from DevicePowerStream#window.time(1 min) 
+@info(name='surge-detector')
+from DevicePowerStream#window.time(1 min)
 select deviceType, sum(power) as powerConsumed
 group by deviceType
 having powerConsumed > 10000
@@ -40,7 +40,7 @@ insert into PowerSurgeAlertStream;
 ```
 
 Above query executes the following tasks.
-1. Retains events arrived in last  1 minute period
+1. Retains events arrived in last 1 minute period
 1. Group all the events by the electronic device type and calculate the total power consumption
 1. Select all the devices which exceed 1000W power consumption
 1. Output aggregated events once in each 30 seconds
@@ -77,7 +77,7 @@ Here the Siddhi operator divides the given Siddhi app into two partial Siddhi ap
 1. Passthrough app (power-consume-app-0)
 1. Process app (power-consume-app-1)
 
-Where passthrough app receives HTTP requests and redirects those requests to the NATS streaming cluster to the Process app to execute the logic in a stateful way and produce the output via logs. Here the `siddhi-nats-1` pod is the NATS cluster which automatically created by the Siddhi operator. The `siddhi-stan-1 ` pod is the NATS streaming cluster which automatically created by the Siddhi operator. NATS is the default naming convension for name NATS clusters and STAN is the default naming convension for name streaming cluster.
+Where passthrough app receives HTTP requests and redirects those requests to the NATS streaming cluster to the Process app to execute the logic in a stateful way and produce the output via logs. Here the `siddhi-nats-1` pod is the NATS cluster which automatically created by the Siddhi operator. The `siddhi-stan-1` pod is the NATS streaming cluster which automatically created by the Siddhi operator. NATS is the default naming convention for name NATS clusters and STAN is the default naming convention for name streaming cluster.
 
 You can view the `SiddhiProcess` using the following commands.
 
