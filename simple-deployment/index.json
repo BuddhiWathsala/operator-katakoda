@@ -8,24 +8,11 @@
       {
         "title": "Preparing the environment",
         "text": "step1.md"
-      },
-      {
-        "title": "Install the Siddhi operator",
-        "text": "step2.md"
-      },
-      {
-        "title": "Deploy a stateful Siddhi app",
-        "text": "step3.md"
-      },
-      {
-        "title": "Send events to the Siddhi app",
-        "text": "step4.md"
       }
     ],
     "intro": {
       "text": "intro.md",
-      "credits": "",
-      "code": "courseBase.sh"
+      "credits": ""
     },
     "finish": {
       "text": "finish.md"
@@ -36,6 +23,6 @@
     "uilayout": "terminal"
   },
   "backend": {
-    "imageid": "minikube"
+    "imageid": "kubernetes"
   }
 }
