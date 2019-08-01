@@ -23,6 +23,34 @@ Siddhi operator splits the given Siddhi App into partial apps and connect with e
 
 ## Setup Persistence Volume
 
+The stateful Siddhi app deployment needs a Kubernetes persistence volume to persist the state of the Siddhi app. To do that in minikube first you have to download this YAML file that contains the K8s persistence volume specification.
+
+`wget https://raw.githubusercontent.com/siddhi-io/siddhi-operator/master/deploy/examples/example-pv.yaml`{{execute}}
+
+You can see the persistence volume YAML using following command.
+
+`cat example-pv.yaml`{{execute}}
+
+Now you can deploy the persistence volume using following command.
+
+`kubectl apply -f example-pv.yaml`{{execute}}
+
+Siddhi runner docker image runs by the user called `siddhi_user`. The `siddhi_user` belongs to the `siddhi_io` user group. Here we mount `/home/docker/` directory as the persistence volume. Hence we need to change the ownership of that director to the `siddhi_user` in the `siddhi_io` user group.
+
+You have to access the minikube cluster using following command.
+
+`minikube ssh`{{execute}} 
+
+Now you have to create the `siddhi_user` and the `siddhi_group` using following commands.
+
+`sudo /usr/sbin/adduser --system -g 802 -u 802 siddhi_user`{{execute}}
+
+`sudo /usr/sbin/addgroup --system -g 802 siddhi_io`{{execute}}
+
+After that change the ownership of the directory using following command.
+
+`sudo chown siddhi_user:siddhi_io /home/docker`
+
 ## Install Siddhi operator
 
 Deploy the necessary prerequisite such as  CRD, service accounts, roles, and role bindings using the following command.
