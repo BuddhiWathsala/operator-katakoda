@@ -24,7 +24,8 @@
     ],
     "intro": {
       "text": "intro.md",
-      "credits": ""
+      "credits": "",
+      "code": "courseBase.sh"
     },
     "finish": {
       "text": "finish.md"
@@ -35,6 +36,7 @@
     "uilayout": "terminal"
   },
   "backend": {
-    "imageid": "kubernetes-cluster"
+    "imageid": "minikube"
   }
 }
+
