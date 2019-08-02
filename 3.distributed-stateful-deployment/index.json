@@ -1,6 +1,6 @@
 {
-  "title": "Distributed Stateful Siddhi App Deployment",
-  "description": "Deploy a Distributed Stateful Siddhi App in K8s Cluster",
+  "title": "Distributed Stateful Siddhi App",
+  "description": "Deploy a Stateful Siddhi App in Distributed Mode in a Kubernetes Cluster",
   "difficulty": "beginner",
   "time": "8 minutes",
   "details": {

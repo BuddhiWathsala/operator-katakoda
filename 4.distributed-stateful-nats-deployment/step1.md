@@ -1,25 +1,39 @@
-Siddhi is a cloud-native Streaming and Complex Event Processing engine that understands Streaming SQL queries to capture events from diverse data sources, process them, detect complex conditions, and publish output to various endpoints in real-time. 
+[Siddhi](http://siddhi.io) is a cloud-native, scalable, Streaming and Complex Event Processing System capable of building real-time applications.
 
-Siddhi operator allows you to run Siddhi stream processing logic directly on a Kubernetes cluster.
+In this scenario, we will see how we can deploy a Siddhi application that runs distributed with high availability preserving its internal states. Here we will demonstrate how to use an external user-defined NATS messaging system to connect all partial Siddhi apps.
+We will be deploying the following `PowerConsumptionSurgeDetection` app.
 
-Siddhi uses various types of sources to receive events like HTTP, Kafka, NATS, and Prometheus, etc. Siddhi operator by default uses NGINX ingress controller to receive HTTP/HTTPS requests. Therefore first you have to [enable ingress](https://kubernetes.github.io/ingress-nginx/deploy/) in your kubernetes cluster. Use the following command to enable NGINX ingress controller in this minikube cluster.
+```programming
+@App:name("PowerConsumptionSurgeDetection")
 
-`minikube addons enable ingress`{{execute}}
+@App:description("Consumes power consumption events from HTTP on JSON format `{ 'deviceType': 'dryer', 'power': 6000 }`, and alerts the user if the power consumption in last 1 minute is greater than or equal to 10000W by logging a message once every 30 seconds.")
 
-Siddhi supports two different deployment types.
+@source(type='http', receiver.url='${RECEIVER_URL}',
+  basic.auth.enabled='false', @map(type='json'))
+define stream DevicePowerStream(deviceType string, power int);
 
-1. Default deployment
-1. Distributed deployment
+@sink(type='log', prefix='LOGGER') 
+define stream PowerSurgeAlertStream(deviceType string, powerConsumed long);
 
-In this example, we are planning to deploy a basic distributed Siddhi app using the Siddhi operator. All the partial apps that deploying in this distributed deployment connected to a messaging system. The distributed deployment use this messaging system to receive messages without any dropouts. Siddhi operator supports NATS as the default messaging system. Now we need to install the NATS operator into the Kubernetes cluster.
+@info(name='surge-detector')  
+from DevicePowerStream#window.time(1 min)
+select deviceType, sum(power) as powerConsumed
+group by deviceType
+having powerConsumed > 10000
+output every 30 sec
+insert into PowerSurgeAlertStream;
+```
 
-`kubectl apply -f https://github.com/nats-io/nats-operator/releases/download/v0.5.0/00-prereqs.yaml`{{execute}}
+The above query consumes events from `HTTP` as a `JSON` message of `{ 'deviceType': 'dryer', 'power': 6000 }` format, and inserts the events into `DevicePowerStream`. From which using the query `surge-detector`, it generates an event once every 30 seconds and inserts into the `PowerSurgeAlertStream`, if the total power consumption in the last 1 minute is greater than or equal to 10000W. The events pushed to the `PowerSurgeAlertStream` will be then logged to the console.
 
-`kubectl apply -f https://github.com/nats-io/nats-operator/releases/download/v0.5.0/10-deployment.yaml`{{execute}}
+This app is stateful because it needs to preserve the running sum of power consumption even during failures and restarts.
 
+Prerequisites on deploying this app:
 
-NATS server more concern about the simplicity, performance, and ease of use. For extended functionalities, we need NATS streaming server. Also, the [NATS extension](https://github.com/siddhi-io/siddhi-io-nats) for Siddhi connect to the NATS streaming server. The NATS streaming operator is also a prerequisite for the Siddhi distributed deployment.
+- NATS - For internal messaging between distributed Siddhi Apps.
+- NATS Streaming - To preserve messages for reply upon failure.
+- Ingress - As Siddhi uses NGINX ingress controller to receive HTTP/HTTPS requests.
+- Persistence Volume - To preserve the periodic snapshots produced by Siddhi 
+- Siddhi Operator - For deploying and managing distributed Siddhi Apps.
 
-`kubectl apply -f https://raw.githubusercontent.com/nats-io/nats-streaming-operator/master/deploy/default-rbac.yaml`{{execute}}
-
-`kubectl apply -f https://raw.githubusercontent.com/nats-io/nats-streaming-operator/master/deploy/deployment.yaml`{{execute}}
+The following section explains how we can install the prerequisites.

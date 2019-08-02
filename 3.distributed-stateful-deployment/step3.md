@@ -2,11 +2,11 @@ Here we will deploy a stateful Siddhi app that we have discussed in the introduc
 
 A SiddhiProcess YAML to deploy the application can be retrieved as bellow.
 
-`wget https://raw.githubusercontent.com/siddhi-io/siddhi-operator/master/deploy/examples/example-stateful-log-app.yaml`{{execute}}
+`wget https://raw.githubusercontent.com/siddhi-io/siddhi-operator/master/deploy/examples/example-stateful-distributed-log-app.yaml`{{execute}}
 
 View the SiddhiProcess YAML as following.
 
-`cat example-stateful-log-app.yaml`{{execute}}
+`cat example-stateful-distributed-log-app.yaml`{{execute}}
 
 This Siddhi application uses an HTTP source like below to receive events.
 
@@ -54,7 +54,7 @@ messagingSystem:
 
 Now you can deploy the Stateful Siddhi App.
 
-`kubectl apply -f example-stateful-log-app.yaml`{{execute}}
+`kubectl apply -f example-stateful-distributed-log-app.yaml`{{execute}}
 
 Validate the app is deployed correctly by running.
 
