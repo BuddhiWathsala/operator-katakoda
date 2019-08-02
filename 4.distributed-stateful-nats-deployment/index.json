@@ -2,7 +2,7 @@
   "title": "Distributed Stateful Siddhi App with NATS",
   "description": "Deploy a Stateful Siddhi App in Distributed Mode in a Kubernetes Cluster with Preconfigured NATS",
   "difficulty": "beginner",
-  "time": "5 minutes",
+  "time": "15 minutes",
   "details": {
     "steps": [
       {
