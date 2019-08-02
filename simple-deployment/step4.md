@@ -1,21 +1,24 @@
-Application can be tested by sending HTTP requests. We can send multiple HTTP requests using the curl command as given below.
+Send an event using an HTTP request. You can send multiple HTTP requests. The Siddhi app will print the log if the device type is dryer and power is greater than or equals to 600W.
 
-```
+`
     curl -X POST \
-    http://siddhi/power-consume-app-0/8080/checkPower \
+    http://siddhi/power-surge-app-0/8080/checkPower \
     -H 'Accept: */*' \
     -H 'Content-Type: application/json' \
     -H 'Host: siddhi' \
     -d '{
     "deviceType": "dryer",
-    "power": 100000
+    "power": 600
     }'
-```{{execute}}
+`{{execute}}
 
-When Siddhi app receives a total of more than 10000W in last 1 minute it will print a log once every 30 seconds.Use the following command to view logs. Since the logs will print in every 30 seconds, at times we might need to wait for a couple of seconds to view the logs.
+Use the following command to view logs. Logs will print in every 30 seconds, therefore please wait for a couple of seconds to view the logs.
 
-`kubectl logs $(kubectl get pods | awk '{ print $1 }' | grep ^power-consume-app-1) | tail -n 10`{{execute}}
+`kubectl logs $(kubectl get pods | awk '{ print $1 }' | grep ^power-surge-app) | tail -n 10`{{execute}}
 
-The expected output logs will be as following.
+The event should be logged as below.
 
-## TODO 
+```
+...
+[2019-08-02 05:13:07,008]  INFO {io.siddhi.core.stream.output.sink.LogSink} - LOGGER : Event{timestamp=1564722787005, data=[dryer, 600], isExpired=false}
+```

@@ -2,7 +2,7 @@
   "title": "Distributed Stateful Siddhi App Deployment",
   "description": "Deploy a Distributed Stateful Siddhi App in K8s Cluster",
   "difficulty": "beginner",
-  "time": "5 minutes",
+  "time": "8 minutes",
   "details": {
     "steps": [
       {
