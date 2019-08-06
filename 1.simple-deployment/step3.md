@@ -55,7 +55,6 @@ $ kubectl get pods
 NAME                                 READY     STATUS    RESTARTS   AGE
 power-surge-app-0-57f687cc85-8k9d6   1/1       Running   0          2m
 siddhi-operator-6f7d8f7556-j9j89     1/1       Running   0          5m
-siddhi-parser-547cdd7885-5rcz9       1/1       Running   0          5m
 ```
 
 You can view the `SiddhiProcess` using the following commands.

@@ -73,7 +73,6 @@ nats-streaming-operator-64b565bcc7-r95fl   1/1       Running   0          5m
 power-consume-app-0-886559b77-hq2jk        1/1       Running   0          2m
 power-consume-app-1-648b76d86d-6cxnx       1/1       Running   0          2m
 siddhi-operator-6f7d8f7556-j9j89           1/1       Running   0          5m
-siddhi-parser-7847c7dd67-kf4xk             1/1       Running   0          5m
 stan-siddhi-1                              1/1       Running   0          5m
 ```
 

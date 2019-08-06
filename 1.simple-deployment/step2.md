@@ -22,14 +22,13 @@ Ensure that all necessary pods in the cluster up and running using the following
 
 `kubectl get pods`{{execute}}
 
-Make sure the following two pods are up and running.
+Make sure the Siddhi operator is up and running.
 
 ```sh
 $ kubectl get pods
 
 NAME                                 READY     STATUS    RESTARTS   AGE
 siddhi-operator-6f7d8f7556-j9j89     1/1       Running   0          2m
-siddhi-parser-547cdd7885-5rcz9       1/1       Running   0          2m
 ```
 
 The next section provides information on Deploying Stateless Siddhi App.

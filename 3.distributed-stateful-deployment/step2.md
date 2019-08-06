@@ -69,7 +69,6 @@ NAME                                       READY     STATUS    RESTARTS   AGE
 nats-operator-dd7f4945f-x4vf8              1/1       Running   0          10m
 nats-streaming-operator-6fbb6695ff-9rmlx   1/1       Running   0          10m
 siddhi-operator-6698d8f69d-w2kvj           1/1       Running   0          10m
-siddhi-parser-76448887d5-hgnrw             1/1       Running   0          10m
 ```
 
 The next section provides information on Deploying Stateful Siddhi App.

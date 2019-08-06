@@ -69,7 +69,6 @@ power-consume-app-0-7486b87979-6tccx       1/1       Running   0          5m
 power-consume-app-1-588996fcfb-prncj       1/1       Running   0          5m
 siddhi-nats-1                              1/1       Running   0          5m
 siddhi-operator-6698d8f69d-w2kvj           1/1       Running   0          10m
-siddhi-parser-76448887d5-hgnrw             1/1       Running   0          10m
 siddhi-stan-1                              1/1       Running   1          5m
 ```
 

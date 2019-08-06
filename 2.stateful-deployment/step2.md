@@ -45,17 +45,22 @@ Deploy the necessary prerequisite such as  CRD, service accounts, roles, and rol
 
 ## Validate the Environment
 
-Ensure that all necessary pods in the cluster up and running using the following command.
+Ensure that all necessary prerequisites in the cluster up and running using the following commands.
 
 `kubectl get pods`{{execute}}
 
-Make sure the all the following 4 pods are up and running.
+`kubectl get pv`{{execute}}
+
+Make sure the all prerequisites are correctly configured.
 
 ```sh
 $ kubectl get pods
 NAME                                       READY     STATUS        RESTARTS   AGE
 siddhi-operator-6f7d8f7556-j9j89           1/1       Running       0          2m
-siddhi-parser-7847c7dd67-kf4xk             1/1       Running       0          2m
+
+$ kubectl get pv
+NAME        CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM     STORAGECLASS   REASON    AGE
+siddhi-pv   1Gi        RWO            Recycle          Available             standard                 2m
 ```
 
 The next section provides information on Deploying Stateful Siddhi App.
