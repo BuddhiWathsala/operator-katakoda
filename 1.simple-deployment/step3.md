@@ -45,6 +45,7 @@ Now you can deploy the stateless Siddhi App.
 
 `kubectl apply -f example-stateless-log-app.yaml`{{execute}}
 
+
 Validate the app is deployed correctly by running.
 
 `kubectl get deploy`{{execute}}
@@ -58,7 +59,10 @@ siddhi-operator     1/1     1            1           5m
 
 **Note that** here Siddhi operator starts a parser deployment for Siddhi apps as `power-surge-app`. It will automatically be removed by the operator. The actual deployment of the Siddhi app starts as `power-surge-app-0`. You have to wait until `power-surge-app-0` deployment up and running.
 
+
 You can view the `SiddhiProcess` using the following commands.
+
+`kubectl get sp`{{execute}}
 
 ```sh
 $ kubectl get sp
