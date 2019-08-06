@@ -2,7 +2,7 @@ Here we will deploy a stateful Siddhi app that we have discussed in the introduc
 
 A SiddhiProcess YAML to deploy the application can be retrieved as bellow.
 
-`wget https://raw.githubusercontent.com/siddhi-io/siddhi-operator/master/deploy/examples/example-stateful-monolithic-log-app.yaml`{{execute}}
+`wget https://raw.githubusercontent.com/BuddhiWathsala/siddhi-operator/katacoda-0.2.0-m2/deploy/examples/example-stateful-monolithic-log-app.yaml`{{execute}}
 
 View the SiddhiProcess YAML as following.
 
@@ -51,16 +51,7 @@ Now you can deploy the Stateful Siddhi App.
 
 Validate the app is deployed correctly by running.
 
-`kubectl get pods`{{execute}}
-
-```sh
-$ kubectl get pods
-NAME                                  READY     STATUS    RESTARTS   AGE
-power-consume-app-0-886559b77-6w6lh   1/1       Running   0          2m
-siddhi-operator-6f7d8f7556-j9j89      1/1       Running   0          5m
-```
-
-You can view the `SiddhiProcess` using the following commands.
+`kubectl get sp`{{execute}}
 
 ```sh
 $ kubectl get sp
