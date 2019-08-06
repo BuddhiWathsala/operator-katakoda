@@ -47,11 +47,22 @@ Now you can deploy the stateless Siddhi App.
 
 Validate the app is deployed correctly by running.
 
-`kubectl get sp`{{execute}}
+`kubectl get deploy`{{execute}}
+
+```sh
+$ kubectl get deploy
+NAME                READY   UP-TO-DATE   AVAILABLE   AGE
+power-surge-app-0   1/1     1            1           2m
+siddhi-operator     1/1     1            1           5m
+```
+
+**Note that** here Siddhi operator starts a parser deployment for Siddhi apps as `power-surge-app`. It will automatically be removed by the operator. The actual deployment of the Siddhi app starts as `power-surge-app-0`. You have to wait until `power-surge-app-0` deployment up and running.
+
+You can view the `SiddhiProcess` using the following commands.
 
 ```sh
 $ kubectl get sp
 
-NAME              STATUS    READY     AGE
-power-surge-app   Running   1/1       5m
+NAME              STATUS    READY    AGE
+power-surge-app   Running   1/1      5m
 ```
