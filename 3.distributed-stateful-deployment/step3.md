@@ -62,12 +62,13 @@ Validate the app is deployed correctly by running.
 
 ```sh
 $ kubectl get deploy
-NAME                READY   UP-TO-DATE   AVAILABLE   AGE
-power-surge-app-0   1/1     1            1           2m
-siddhi-operator     1/1     1            1           5m
+NAME                  READY   UP-TO-DATE   AVAILABLE   AGE
+power-consume-app-0   1/1     1            1           5m
+power-consume-app-1   1/1     1            1           5m
+siddhi-operator       1/1     1            1           10m
 ```
 
-**Note that** here Siddhi operator starts a parser deployment for Siddhi apps as `power-surge-app`. It will automatically be removed by the operator. The actual deployment of the Siddhi app starts as `power-surge-app-0`. You have to wait until `power-surge-app-0` deployment up and running.
+**Note that** here Siddhi operator starts a parser deployment for Siddhi apps as `power-consume-app`. It will automatically be removed by the operator. The actual deployments of the Siddhi app are `power-consume-app-0` and `power-consume-app-1`. You have to wait until `power-surge-app-0` and `power-consume-app-1` deployments up and running.
 
 
 You can view the `SiddhiProcess` using the following commands.
