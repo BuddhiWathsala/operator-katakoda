@@ -14,7 +14,7 @@ Send an event using an HTTP request. You can send multiple HTTP requests. The Si
 
 Use the following command to view logs. Logs will print in every 30 seconds, therefore please wait for a couple of seconds to view the logs.
 
-`kubectl logs $(kubectl get pods | awk '{ print $1 }' | grep ^power-surge-app) | tail -n 10`{{execute}}
+`kubectl logs $(kubectl get pods | awk '{ print $1 }' | grep ^power-surge-app-0) | tail -n 10`{{execute}}
 
 The event should be logged as below.
 

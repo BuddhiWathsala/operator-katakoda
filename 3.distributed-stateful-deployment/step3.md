@@ -58,27 +58,21 @@ Now you can deploy the Stateful Siddhi App.
 
 Validate the app is deployed correctly by running.
 
-`kubectl get pods`{{execute}}
+`kubectl get deploy`{{execute}}
 
 ```sh
-$ kubectl get pods
-NAME                                       READY     STATUS    RESTARTS   AGE
-nats-operator-dd7f4945f-x4vf8              1/1       Running   0          10m
-nats-streaming-operator-6fbb6695ff-9rmlx   1/1       Running   0          10m
-power-consume-app-0-7486b87979-6tccx       1/1       Running   0          5m
-power-consume-app-1-588996fcfb-prncj       1/1       Running   0          5m
-siddhi-nats-1                              1/1       Running   0          5m
-siddhi-operator-6698d8f69d-w2kvj           1/1       Running   0          10m
-siddhi-stan-1                              1/1       Running   1          5m
+$ kubectl get deploy
+NAME                READY   UP-TO-DATE   AVAILABLE   AGE
+power-surge-app-0   1/1     1            1           2m
+siddhi-operator     1/1     1            1           5m
 ```
 
-Here the Siddhi operator divides the given Siddhi app into two partial Siddhi apps and deploys both apps in two kubernetes deployments as follows,
-1. Passthrough app (power-consume-app-0)
-1. Process app (power-consume-app-1)
+**Note that** here Siddhi operator starts a parser deployment for Siddhi apps as `power-surge-app`. It will automatically be removed by the operator. The actual deployment of the Siddhi app starts as `power-surge-app-0`. You have to wait until `power-surge-app-0` deployment up and running.
 
-Where passthrough app receives HTTP requests and redirects those requests to the NATS streaming cluster to the Process app to execute the logic in a stateful way and produce the output via logs. Here the `siddhi-nats-1` pod is the NATS cluster which automatically created by the Siddhi operator. The `siddhi-stan-1` pod is the NATS streaming cluster which automatically created by the Siddhi operator. NATS is the default naming convention for name NATS clusters and STAN is the default naming convention for name streaming cluster.
 
 You can view the `SiddhiProcess` using the following commands.
+
+`kubectl get sp`{{execute}}
 
 ```sh
 $ kubectl get sp
