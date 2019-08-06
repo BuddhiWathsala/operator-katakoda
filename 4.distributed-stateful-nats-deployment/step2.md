@@ -24,7 +24,7 @@ Now you can download the YAML file to create NATS cluster.
 
 `wget https://raw.githubusercontent.com/siddhi-io/siddhi-operator/master/deploy/examples/example-nats-cluster.yaml`{{execute}}
 
-See the `NatsCluster` YAML file.
+See the `NatsCluster` YAML file and deploy it.
 
 `cat example-nats-cluster.yaml`{{execute}}
 
@@ -37,13 +37,15 @@ spec:
   size: 1
 ```
 
+`kubectl apply -f example-nats-cluster.yaml`{{execute}}
+
 This is a NATS cluster of a single Kubernetes pod.
 
 Now you can download the YAML file that can be used to deploy a NATS streaming cluster.
 
 `wget https://raw.githubusercontent.com/siddhi-io/siddhi-operator/master/deploy/examples/example-stan-cluster.yaml`{{execute}}
 
-See the `NatsStreamingCluster` YAML file.
+See the `NatsStreamingCluster` YAML file and deploy.
 
 `cat example-stan-cluster.yaml`{{execute}}
 
@@ -56,6 +58,8 @@ spec:
   size: 1
   natsSvc: nats-siddhi
 ```
+
+`kubectl apply -f example-stan-cluster.yaml`{{execute}}
 
 Here you can see that this NATS streaming cluster connected to the NATS cluster that created previously. Now,  you have successfully created a NATS cluster called `nats-siddhi` and NATS streaming cluster called `stan-siddhi`. NATS is the default naming convention for NATS cluster and STAN is the default naming convention for streaming clusters.
 
