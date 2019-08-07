@@ -1,0 +1,31 @@
+{
+    "title": "Siddhi tutorials",
+    "description": "This course contains series of tutorials about Cellery",
+    "courses": [
+      {
+        "course_id": "hello-world",
+        "title": "Hello world",
+        "description": "A guide that deploys simple hello world with Cellery"
+      },
+      {
+        "course_id": "pet-store",
+        "title": "Pet-Store",
+        "description": "A guide that deploys simple Petstore with cellery"
+      },
+      {
+        "course_id": "writing-cell",
+        "title": "Writing cell file from scratch",
+        "description": "Setp by Setp guide to write a cell file"
+      },
+      {
+        "course_id": "playground-stable",
+        "title": "Cellery Playground (Stable)",
+        "description": "Play and experiment with stable Cellery release v0.3.0"
+      },
+      {
+        "course_id": "playground-nightly",
+        "title": "Cellery Playground (Nightly Build)",
+        "description": "Play and experiment with latest Cellery nightly build"
+      }
+    ]
+  }
