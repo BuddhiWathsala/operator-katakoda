@@ -3,12 +3,12 @@
   "description": "This course contains series of tutorials about Siddhi ",
   "courses": [
     {
-      "course_id": "1.simple-deployment",
+      "course_id": "simple-deployment",
       "title": "Simple Siddhi App",
       "description": "Deploy simple stateless Siddhi app in a Kubernetes cluster"
     },
     {
-      "course_id": "2.stateful-deployment",
+      "course_id": "stateful-deployment",
       "title": "Stateful Siddhi App",
       "description": "Deploy a Stateful Siddhi Application in Kubernetes"
     }
